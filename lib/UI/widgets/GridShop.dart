@@ -19,7 +19,7 @@ class _GridShop extends State<GridShop> {
   Widget build(BuildContext context) {
     double _gridSize = MediaQuery.of(context).size.height * 0.88;
     double containerHeight =
-        MediaQuery.of(context).size.height * 0.75; //88% of screen
+        MediaQuery.of(context).size.height * 0.77; //88% of screen
     double childAspectRatio = MediaQuery.of(context).size.width /
         (MediaQuery.of(context).size.height / 1.05);
 

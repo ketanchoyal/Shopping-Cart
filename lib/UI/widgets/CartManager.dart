@@ -28,7 +28,7 @@ class _CartManager extends State<CartManager> {
                 children: <Widget>[
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 20),
-                    height: _gridSize * 0.85,
+                    height: _gridSize * 0.83,
                     width: double.infinity,
                     child: Column(
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,14 +40,14 @@ class _CartManager extends State<CartManager> {
                             "Cart",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 40,
+                              fontSize: 38,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.only(bottom: 0),
-                          height: _gridSize * 0.75,
+                          height: _gridSize * 0.7,
                           // constraints:
                           // BoxConstraints(maxHeight: _gridSize * 0.75),
                           child: ListView.builder(

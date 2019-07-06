@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Grocery Store',
       theme: ThemeData(
-        primaryColor: Colors.black,
+        // primaryColor: Colors.black,
         fontFamily: 'JosefinSans',
       ),
       home: MyHomePage(),
