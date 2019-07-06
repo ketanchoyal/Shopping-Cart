@@ -1,5 +1,5 @@
 import 'package:e_cart_app/Core/models/Product.dart';
-import 'package:e_cart_app/UI/views/ProductView.dart';
+import 'package:e_cart_app/UI/pages/ProductView.dart';
 import 'package:flutter/material.dart';
 class ProductWidget extends StatelessWidget {
   final Product product;
