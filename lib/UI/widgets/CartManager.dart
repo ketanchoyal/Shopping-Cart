@@ -1,6 +1,7 @@
-import 'package:e_cart_app/Core/bloc/CartBloc.dart';
-import 'package:e_cart_app/Core/models/Cart.dart';
+import 'package:e_cart_app/Core/ViewModel/CartViewModel.dart';
+import 'package:e_cart_app/UI/pages/BaseView.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'OrderWidget.dart';
 
@@ -10,24 +11,23 @@ class CartManager extends StatefulWidget {
 }
 
 class _CartManager extends State<CartManager> {
-  CartBloc _cartBloc = CartBloc();
+  // CartBloc _cartBloc = CartBloc();
 
   @override
   Widget build(BuildContext context) {
     double _gridSize = MediaQuery.of(context).size.height * 0.90;
+    // var model = Provider.of<CartViewModel>(context);
 
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: SafeArea(
-        bottom: false,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            StreamBuilder(
-              initialData: _cartBloc.currentCart,
-              stream: _cartBloc.observableCart,
-              builder: (context, AsyncSnapshot<Cart> snapshot) {
-                return Container(
+    return BaseView<CartViewModel>(
+        builder: (context, model, child) {
+        return Container(
+          height: MediaQuery.of(context).size.height,
+          child: SafeArea(
+            bottom: false,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
                   margin: EdgeInsets.symmetric(horizontal: 20),
                   height: _gridSize,
                   width: double.infinity,
@@ -50,22 +50,20 @@ class _CartManager extends State<CartManager> {
                         margin: EdgeInsets.only(bottom: 10),
                         height: _gridSize * 0.75,
                         child: ListView.builder(
-                          itemCount: snapshot.data.orders.length,
+                          itemCount: model.observableCart.orders.length,
                           itemBuilder: (context, index) {
                             return Dismissible(
-                              background:
-                                  Container(color: Colors.transparent),
-                              key: Key(snapshot.data.orders[index].id
-                                  .toString()),
+                              background: Container(color: Colors.transparent),
+                              key: Key(
+                                  model.observableCart.orders[index].id.toString()),
                               onDismissed: (_) {
-                                _cartBloc.removerOrderOfCart(
-                                    snapshot.data.orders[index]);
+                                model.removerOrderOfCart(
+                                    model.observableCart.orders[index]);
                               },
                               child: Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(vertical: 10),
+                                  padding: EdgeInsets.symmetric(vertical: 10),
                                   child: OrderWidget(
-                                      snapshot.data.orders[index],
+                                      model.observableCart.orders[index],
                                       _gridSize)),
                             );
                           },
@@ -79,8 +77,7 @@ class _CartManager extends State<CartManager> {
                             // height: _gridSize * 0.2,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Text(
                                   "Total",
@@ -90,7 +87,7 @@ class _CartManager extends State<CartManager> {
                                   ),
                                 ),
                                 Text(
-                                  "\$${snapshot.data.totalPrice().toStringAsFixed(2)}",
+                                  "\$${model.observableCart.totalPrice().toStringAsFixed(2)}",
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -112,7 +109,7 @@ class _CartManager extends State<CartManager> {
                               ),
                               padding: EdgeInsets.all(20),
                               onPressed: () {
-                                if (_cartBloc.currentCart.isEmpty)
+                                if (model.currentCart.isEmpty)
                                   Scaffold.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
@@ -133,12 +130,12 @@ class _CartManager extends State<CartManager> {
                       ),
                     ],
                   ),
-                );
-              },
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      }
     );
   }
 }

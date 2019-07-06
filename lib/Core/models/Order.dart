@@ -7,6 +7,7 @@ class Order {
   int _id;
 
   Order(this._product, this._quantity, this._id);
+  Order.init();
 
   int get id => _id;
 

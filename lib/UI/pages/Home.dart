@@ -9,14 +9,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool _showCart = false;
-  CartBloc _cartBloc;
+  // CartBloc _cartBloc;
 
   ScrollController _scrollController = ScrollController();
 
   @override
   initState() {
     _scrollController = ScrollController();
-    _cartBloc = CartBloc();
+    // _cartBloc = CartBloc();
     super.initState();
   }
 
@@ -42,12 +42,12 @@ class _MyHomePageState extends State<MyHomePage> {
             _scrollController.animateTo(
                 _scrollController.position.minScrollExtent,
                 curve: Curves.fastOutSlowIn,
-                duration: Duration(seconds: 2));
+                duration: Duration(milliseconds: 1200));
           else
             _scrollController.animateTo(
                 _scrollController.position.maxScrollExtent,
                 curve: Curves.fastOutSlowIn,
-                duration: Duration(seconds: 2));
+                duration: Duration(milliseconds: 1200));
 
           setState(() {
             _showCart = !_showCart;
@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void dispose() {
-    _cartBloc.dispose();
+    // _cartBloc.dispose();
     super.dispose();
   }
 }

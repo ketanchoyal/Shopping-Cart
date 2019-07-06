@@ -1,42 +1,42 @@
+import 'package:e_cart_app/Core/ViewModel/CartViewModel.dart';
 import 'package:e_cart_app/Core/bloc/CartBloc.dart';
 import 'package:e_cart_app/Core/models/Cart.dart';
+import 'package:e_cart_app/UI/pages/BaseView.dart';
 import 'package:flutter/material.dart';
-
+ 
 class MinimalCart extends StatelessWidget {
   final double _gridSize;
   final List<Widget> _listWidget = List();
-  final CartBloc _cartBloc = CartBloc();
+  // final CartBloc _cartBloc = CartBloc();
   static final ScrollController _scrollController = ScrollController();
   MinimalCart(this._gridSize);
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-        initialData: _cartBloc.currentCart,
-        stream: _cartBloc.observableCart,
-        builder: (context, AsyncSnapshot<Cart> snapshot) {
-          _fillList(snapshot.data, context);
-          var content = Container(
-              margin: EdgeInsets.only(left: 10, right: 80),
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height - _gridSize,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: _listWidget.length,
-                  controller: _scrollController,
-                  itemBuilder: (context, index) {
-                    return Align(
-                        alignment: Alignment.centerLeft,
-                        child: _listWidget[index]);
-                  }));
-          try {
-            _scrollController
-                .jumpTo(_scrollController.position.maxScrollExtent);
-          } catch (e) {
-            //TODO fix
-          }
-          return content;
-        });
+    return BaseView<CartViewModel>(
+      builder: (context, model, child) {
+        _fillList(model.observableCart, context);
+        var content = Container(
+            margin: EdgeInsets.only(left: 10, right: 80),
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height - _gridSize,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: _listWidget.length,
+                controller: _scrollController,
+                itemBuilder: (context, index) {
+                  return Align(
+                      alignment: Alignment.centerLeft,
+                      child: _listWidget[index]);
+                }));
+        try {
+          _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+        } catch (e) {
+          //TODO fix
+        }
+        return content;
+      },
+    );
   }
 
   void _fillList(Cart cart, BuildContext context) {

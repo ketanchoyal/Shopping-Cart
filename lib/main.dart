@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'locator.dart';
 
 void main() {
-  timeDilation = 2;
+  timeDilation = 1.5;
   Provider.debugCheckInvalidValueType = null;
   setupLocator();
   runApp(MyApp());

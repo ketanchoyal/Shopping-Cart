@@ -1,16 +1,21 @@
+import 'package:e_cart_app/Core/ViewModel/CartViewModel.dart';
 import 'package:e_cart_app/Core/models/Product.dart';
-import 'package:e_cart_app/Core/repositories/ProductsRepository.dart';
+import 'package:e_cart_app/Core/Services/ProductsRepository.dart';
+import 'package:e_cart_app/locator.dart';
 import 'package:flutter/material.dart';
 import 'CategoryDropMenu.dart';
 import 'MinimalCart.dart';
 import 'ProductWidget.dart';
-
+ 
 class GridShop extends StatefulWidget {
   @override
   _GridShop createState() => _GridShop();
 }
 
 class _GridShop extends State<GridShop> {
+
+  var _cartViewModel = locator.get<CartViewModel>();
+
   @override
   Widget build(BuildContext context) {
     double _gridSize = MediaQuery.of(context).size.height * 0.90;
@@ -20,7 +25,7 @@ class _GridShop extends State<GridShop> {
         (MediaQuery.of(context).size.height / 1.0);
 
     List<Product> _products = ProductsRepository().fetchAllProducts();
-
+    // _cartViewModel.clearLastOrder();
     return Column(
       children: <Widget>[
         Container(
@@ -36,8 +41,9 @@ class _GridShop extends State<GridShop> {
           child: Column(
             children: <Widget>[
               Container(
-                  margin: EdgeInsets.only(top: 40),
-                  child: Column(children: <Widget>[
+                margin: EdgeInsets.only(top: 40),
+                child: Column(
+                  children: <Widget>[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -49,34 +55,39 @@ class _GridShop extends State<GridShop> {
                       ],
                     ),
                     Container(
-                        height: containerHeight,
-                        margin: EdgeInsets.only(top: 0),
-                        child: PhysicalModel(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(30),
-                              bottomRight: Radius.circular(30),
-                            ),
-                            clipBehavior: Clip.antiAlias,
-                            child: GridView.builder(
-                                itemCount: _products.length,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2,
-                                        childAspectRatio: childAspectRatio),
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Padding(
-                                    padding: EdgeInsets.only(
-                                        top: index % 2 == 0 ? 20 : 0,
-                                        right: index % 2 == 0 ? 5 : 0,
-                                        left: index % 2 == 1 ? 5 : 0,
-                                        bottom: index % 2 == 1 ? 20 : 0),
-                                    child: ProductWidget(
-                                      product: _products[index],
-                                    ),
-                                  );
-                                })))
-                  ]))
+                      height: containerHeight,
+                      margin: EdgeInsets.only(top: 0),
+                      child: PhysicalModel(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(30),
+                          bottomRight: Radius.circular(30),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        child: GridView.builder(
+                          itemCount: _products.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: childAspectRatio),
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                  top: index % 2 == 0 ? 20 : 0,
+                                  right: index % 2 == 0 ? 5 : 0,
+                                  left: index % 2 == 1 ? 5 : 0,
+                                  bottom: index % 2 == 1 ? 20 : 0),
+                              child: ProductWidget(
+                                product: _products[index],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

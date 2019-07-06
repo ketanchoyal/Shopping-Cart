@@ -1,7 +1,10 @@
+import 'package:e_cart_app/Core/ViewModel/CartViewModel.dart';
 import 'package:e_cart_app/Core/bloc/CartBloc.dart';
 import 'package:e_cart_app/Core/models/Order.dart';
 import 'package:e_cart_app/Core/models/Product.dart';
+import 'package:e_cart_app/locator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductView extends StatefulWidget {
   final Product product;
@@ -12,7 +15,8 @@ class ProductView extends StatefulWidget {
 }
 
 class _ProductView extends State<ProductView> {
-  final CartBloc _cartBloc = CartBloc();
+  // final CartBloc _cartBloc = CartBloc();
+  final cartViewModel = locator.get<CartViewModel>();
   int _quantity = 1;
 
   void _increment() {
@@ -33,6 +37,8 @@ class _ProductView extends State<ProductView> {
 
   @override
   Widget build(BuildContext context) {
+    // cartViewModel.
+    // var cartViewModel = Provider.of<CartViewModel>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -53,7 +59,7 @@ class _ProductView extends State<ProductView> {
                     Center(
                       child: StreamBuilder(
                         initialData: null,
-                        stream: _cartBloc.observableLastOrder,
+                        stream: cartViewModel.observableLastOrder.stream,
                         builder: (context, AsyncSnapshot<Order> snapshot) {
                           String tag = snapshot.data == null
                               ? "tagHero${widget.product.id}"
@@ -195,7 +201,7 @@ class _ProductView extends State<ProductView> {
                           borderRadius: BorderRadius.circular(60)),
                       padding: EdgeInsets.all(20),
                       onPressed: () {
-                        _cartBloc.addOrderToCart(widget.product, _quantity);
+                        cartViewModel.addOrderToCart(widget.product, _quantity);
                         Navigator.of(context).pop();
                       },
                       child: Text(
