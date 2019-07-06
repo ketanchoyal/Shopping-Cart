@@ -1,20 +1,19 @@
 import 'package:e_cart_app/Core/ViewModel/CartViewModel.dart';
 import 'package:e_cart_app/Core/models/Product.dart';
 import 'package:e_cart_app/Core/Services/ProductsRepository.dart';
-import 'package:e_cart_app/locator.dart';
 import 'package:flutter/material.dart';
 import 'CategoryDropMenu.dart';
 import 'MinimalCart.dart';
 import 'ProductWidget.dart';
- 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 class GridShop extends StatefulWidget {
   @override
   _GridShop createState() => _GridShop();
 }
 
 class _GridShop extends State<GridShop> {
-
-  var _cartViewModel = locator.get<CartViewModel>();
+  // var _cartViewModel = locator.get<CartViewModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class _GridShop extends State<GridShop> {
     double containerHeight =
         MediaQuery.of(context).size.height * 0.75; //88% of screen
     double childAspectRatio = MediaQuery.of(context).size.width /
-        (MediaQuery.of(context).size.height / 1.0);
+        (MediaQuery.of(context).size.height / 1.05);
 
     List<Product> _products = ProductsRepository().fetchAllProducts();
     // _cartViewModel.clearLastOrder();
@@ -41,7 +40,7 @@ class _GridShop extends State<GridShop> {
           child: Column(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(top: 40),
+                margin: EdgeInsets.only(top: 30),
                 child: Column(
                   children: <Widget>[
                     Row(
@@ -50,7 +49,10 @@ class _GridShop extends State<GridShop> {
                         CategoryDropMenu(),
                         MaterialButton(
                           onPressed: () {},
-                          child: Icon(Icons.filter_list),
+                          child: Icon(
+                            FontAwesomeIcons.slidersH,
+                            size: 20,
+                          ),
                         )
                       ],
                     ),

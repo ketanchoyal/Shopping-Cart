@@ -40,7 +40,7 @@ class ProductWidget extends StatelessWidget {
             ),
             Container(
               height: height * 0.25,
-              margin: EdgeInsets.only(top: 10),
+              margin: EdgeInsets.only(top: 0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
