@@ -66,13 +66,15 @@ class _GridShop extends State<GridShop> {
                                         childAspectRatio: childAspectRatio),
                                 itemBuilder: (BuildContext context, int index) {
                                   return Padding(
-                                      padding: EdgeInsets.only(
-                                          top: index % 2 == 0 ? 20 : 0,
-                                          right: index % 2 == 0 ? 5 : 0,
-                                          left: index % 2 == 1 ? 5 : 0,
-                                          bottom: index % 2 == 1 ? 20 : 0),
-                                      child: ProductWidget(
-                                          product: _products[index]));
+                                    padding: EdgeInsets.only(
+                                        top: index % 2 == 0 ? 20 : 0,
+                                        right: index % 2 == 0 ? 5 : 0,
+                                        left: index % 2 == 1 ? 5 : 0,
+                                        bottom: index % 2 == 1 ? 20 : 0),
+                                    child: ProductWidget(
+                                      product: _products[index],
+                                    ),
+                                  );
                                 })))
                   ]))
             ],

@@ -40,27 +40,32 @@ class MinimalCart extends StatelessWidget {
   }
 
   void _fillList(Cart cart, BuildContext context) {
-    _listWidget.add(Text("Cart",
+    _listWidget.add(
+      Text(
+        "Cart",
         style: TextStyle(
-            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)));
+            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+      ),
+    );
     _listWidget.addAll(cart.orders.map((order) {
       return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: GestureDetector(
-            child: Hero(
-              tag: "tagHeroOrder${order.id}",
-              child: ClipOval(
-                child: Container(
-                    color: Colors.white,
-                    child: Image.asset(order.product.urlToImage),
-                    height:
-                        (MediaQuery.of(context).size.height - _gridSize) * 0.6),
-              ),
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: GestureDetector(
+          child: Hero(
+            tag: "tagHeroOrder${order.id}",
+            child: ClipOval(
+              child: Container(
+                  color: Colors.white,
+                  child: Image.asset(order.product.urlToImage),
+                  height:
+                      (MediaQuery.of(context).size.height - _gridSize) * 0.6),
             ),
-            onTap: () {
-              //TODO
-            },
-          ));
+          ),
+          onTap: () {
+            //TODO
+          },
+        ),
+      );
     }).toList());
   }
 }
