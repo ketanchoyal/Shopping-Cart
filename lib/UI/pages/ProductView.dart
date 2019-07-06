@@ -7,7 +7,9 @@ import 'package:provider/provider.dart';
 
 class ProductView extends StatefulWidget {
   final Product product;
-  ProductView({Key key, this.product}) : super(key: key);
+  final Order order;
+  final bool fromCart;
+  ProductView({Key key,this.order, this.product, this.fromCart = false}) : super(key: key);
 
   @override
   _ProductView createState() => _ProductView();
@@ -61,7 +63,7 @@ class _ProductView extends State<ProductView> {
                         initialData: null,
                         stream: cartViewModel.observableLastOrder.stream,
                         builder: (context, AsyncSnapshot<Order> snapshot) {
-                          String tag = snapshot.data == null
+                          String tag = widget.fromCart ? "tagHeroOrder${widget.order.id}" : snapshot.data == null
                               ? "tagHero${widget.product.id}"
                               : "tagHeroOrder${snapshot.data.id}";
                           return Hero(

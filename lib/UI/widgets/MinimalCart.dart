@@ -1,6 +1,7 @@
 import 'package:e_cart_app/Core/ViewModel/CartViewModel.dart';
 import 'package:e_cart_app/Core/models/Cart.dart';
 import 'package:e_cart_app/UI/pages/BaseView.dart';
+import 'package:e_cart_app/UI/pages/ProductView.dart';
 import 'package:flutter/material.dart';
 
 class MinimalCart extends StatelessWidget {
@@ -65,7 +66,15 @@ class MinimalCart extends StatelessWidget {
               ),
             ),
             onTap: () {
-              //TODO
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ProductView(
+                        product: order.product,
+                        order: order,
+                        fromCart: true,
+                      ),
+                ),
+              );
             },
           ),
         );
