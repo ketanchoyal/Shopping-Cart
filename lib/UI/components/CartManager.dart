@@ -1,7 +1,8 @@
+import 'package:e_cart_app/Core/bloc/CartBloc.dart';
+import 'package:e_cart_app/Core/models/Cart.dart';
 import 'package:flutter/material.dart';
-import 'package:e_cart_app/models/Cart.dart';
-import 'package:e_cart_app/bloc/CartBloc.dart';
-import 'package:e_cart_app/components/OrderWidget.dart';
+
+import 'OrderWidget.dart';
 
 class CartManager extends StatefulWidget {
   @override

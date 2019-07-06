@@ -1,9 +1,9 @@
+import 'package:e_cart_app/Core/models/Product.dart';
+import 'package:e_cart_app/Core/repositories/ProductsRepository.dart';
 import 'package:flutter/material.dart';
-import 'package:e_cart_app/models/Product.dart';
-import 'package:e_cart_app/repositories/ProductsRepository.dart';
-import 'package:e_cart_app/components/CategoryDropMenu.dart';
-import 'package:e_cart_app/components/ProductWidget.dart';
-import 'package:e_cart_app/components/MinimalCart.dart';
+import 'CategoryDropMenu.dart';
+import 'MinimalCart.dart';
+import 'ProductWidget.dart';
 
 class GridShop extends StatefulWidget {
   @override

@@ -1,8 +1,7 @@
+import 'package:e_cart_app/Core/models/Cart.dart';
+import 'package:e_cart_app/Core/models/Order.dart';
+import 'package:e_cart_app/Core/models/Product.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:e_cart_app/models/Product.dart';
-import 'package:e_cart_app/models/Order.dart';
-import 'package:e_cart_app/models/Cart.dart';
-
 class CartBloc{
 
   static int _orderId = 0;

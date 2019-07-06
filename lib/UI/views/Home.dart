@@ -1,8 +1,7 @@
+import 'package:e_cart_app/Core/bloc/CartBloc.dart';
+import 'package:e_cart_app/UI/components/CartManager.dart';
+import 'package:e_cart_app/UI/components/GridShop.dart';
 import 'package:flutter/material.dart';
-import 'package:e_cart_app/bloc/CartBloc.dart';
-import 'package:e_cart_app/components/GridShop.dart';
-import 'package:e_cart_app/components/CartManager.dart';
-
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();

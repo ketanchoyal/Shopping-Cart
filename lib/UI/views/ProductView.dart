@@ -1,7 +1,7 @@
-import 'package:e_cart_app/bloc/CartBloc.dart';
-import 'package:e_cart_app/models/Order.dart';
+import 'package:e_cart_app/Core/bloc/CartBloc.dart';
+import 'package:e_cart_app/Core/models/Order.dart';
+import 'package:e_cart_app/Core/models/Product.dart';
 import 'package:flutter/material.dart';
-import 'package:e_cart_app/models/Product.dart';
 
 class ProductView extends StatefulWidget {
   final Product product;

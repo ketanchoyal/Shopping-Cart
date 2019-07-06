@@ -1,4 +1,4 @@
-import 'package:e_cart_app/models/Product.dart';
+import 'package:e_cart_app/Core/models/Product.dart';
 
 class ProductsRepository{
 
