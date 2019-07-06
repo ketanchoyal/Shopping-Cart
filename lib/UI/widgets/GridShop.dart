@@ -18,9 +18,9 @@ class _GridShop extends State<GridShop> {
 
   @override
   Widget build(BuildContext context) {
-    double _gridSize = MediaQuery.of(context).size.height * 0.90;
+    double _gridSize = MediaQuery.of(context).size.height * 0.88;
     double containerHeight =
-        MediaQuery.of(context).size.height * 0.79; //88% of screen
+        MediaQuery.of(context).size.height * 0.75; //88% of screen
     double childAspectRatio = MediaQuery.of(context).size.width /
         (MediaQuery.of(context).size.height / 1.0);
 
@@ -60,8 +60,8 @@ class _GridShop extends State<GridShop> {
                       child: PhysicalModel(
                         color: Colors.transparent,
                         borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(30),
-                          bottomRight: Radius.circular(30),
+                          bottomLeft: Radius.circular(40),
+                          bottomRight: Radius.circular(40),
                         ),
                         clipBehavior: Clip.antiAlias,
                         child: GridView.builder(

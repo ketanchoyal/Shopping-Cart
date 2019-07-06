@@ -16,7 +16,7 @@ class OrderWidget extends StatelessWidget {
           child: Container(
             color: Colors.white,
             child: Image.asset(this._order.product.urlToImage),
-            height: (MediaQuery.of(context).size.height - _gridSize) * 0.55,
+            height: (MediaQuery.of(context).size.height - _gridSize) * 1.2,
           ),
         ),
         Padding(

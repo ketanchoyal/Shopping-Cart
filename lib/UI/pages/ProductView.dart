@@ -47,6 +47,7 @@ class _ProductView extends State<ProductView> {
       ),
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
