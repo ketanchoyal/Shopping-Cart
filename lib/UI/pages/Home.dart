@@ -1,4 +1,3 @@
-import 'package:e_cart_app/Core/bloc/CartBloc.dart';
 import 'package:e_cart_app/UI/widgets/CartManager.dart';
 import 'package:e_cart_app/UI/widgets/GridShop.dart';
 import 'package:flutter/material.dart';

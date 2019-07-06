@@ -1,5 +1,4 @@
 import 'package:e_cart_app/Core/ViewModel/CartViewModel.dart';
-import 'package:e_cart_app/Core/bloc/CartBloc.dart';
 import 'package:e_cart_app/Core/models/Order.dart';
 import 'package:e_cart_app/Core/models/Product.dart';
 import 'package:e_cart_app/locator.dart';
